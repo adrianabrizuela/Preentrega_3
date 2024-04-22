@@ -12,6 +12,11 @@ from .views import (
     user_logout_view,
     UserUpdateView,
     sala_search_view,
+    ReservaListView,
+    ReservaCreateView,
+    ReservaDeleteView,
+    ReservaDetailView,
+    ReservaUpdateView,
 
     )
 
@@ -26,5 +31,10 @@ urlpatterns = [
     path("login/", user_login_view, name="login"),
     path("logout/", user_logout_view, name="logout"),
     path("editar-perfil/", UserUpdateView.as_view(), name= 'editar-perfil'),
+    path("reserva/list/", ReservaListView.as_view(), name= "reserva-list"),
+    path("reserva/create/", ReservaCreateView.as_view(), name= "reserva-create"),
+    path("reserva/<int:pk>/delete/", ReservaDeleteView.as_view(), name= 'reserva-delete'),
+    path("reserva/<int:pk>/detail/", ReservaDetailView.as_view(),name= 'reserva-detail'),
+    path("reservaa/<int:pk>/update/", ReservaUpdateView.as_view(), name= "reserva-update"),
 
     ]

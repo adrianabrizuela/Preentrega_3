@@ -76,10 +76,41 @@ def sala_search_view(request):
             request, "bookings/form_search.html", context={"search_form": form}
         )
 
+#-----------------------------------------------------------------
+#                      CRUD RESERVAS
+#-----------------------------------------------------------------
+
+class ReservaListView(LoginRequiredMixin, ListView):
+    model = Reserva
+    template_name = "bookings/vbc/reserva_list.html"
+    context_object_name = "PETERPAN"
 
 
+class ReservaDetailView(LoginRequiredMixin, DetailView):
+    model = Reserva
+    template_name = "bookings/vbc/reserva_detail.html"
+    context_object_name = "CAMPANITA"
 
 
+class ReservaDeleteView(LoginRequiredMixin, DeleteView):
+    model = Reserva
+    template_name = "bookings/vbc/reserva_confirm_delete.html"
+    success_url = reverse_lazy("reserva-list")
+
+
+class ReservaUpdateView(LoginRequiredMixin, UpdateView):
+    model = Reserva
+    template_name = "bookings/vbc/reserva_form.html"
+    fields = ["fecha", "hora_inicio", "hora_fin"]
+    context_object_name = "reserva"
+    success_url = reverse_lazy("reserva-list")
+
+
+class ReservaCreateView(LoginRequiredMixin, CreateView):
+    model = Reserva
+    template_name = "bookings/vbc/reserva_form.html"
+    fields = ["nombre_de_usuario","sala","fecha", "hora_inicio", "hora_fin","descripcion"]
+    success_url = reverse_lazy("reserva-list")
 
 
 #-----------------------------------------------------------------
