@@ -39,6 +39,17 @@
                         <a class="dropdown-item" href="{% url 'sala-buscar' %}">Buscar Sala</a>
                     </div>
                 </li>
+                <!-- Dropdown for Accesorios -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkReserva" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Accesorios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkReserva">
+                        <a class="dropdown-item" href="{% url 'accesorio-list' %}">Todos los accesorios</a>
+                        <a class="dropdown-item" href="{% url 'accesorio-create' %}">Crear Reserva de accesorios</a>
+                        <a class="dropdown-item" href="">Buscar Reserva por accesorio</a>
+                    </div>
+                </li>
                             
             </ul>
             {% endif %}

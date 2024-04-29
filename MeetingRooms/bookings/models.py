@@ -23,6 +23,25 @@ class Sala(models.Model):
         return f"{self.nombre} ({self.get_tipo_display()})"
 
 
+class Accesorio(models.Model):
+    class Tipo(models.TextChoices):
+        CAFETERA = 'Cafetera', 'Cafetera'
+        PROYECTOR = 'Proyector', 'Proyector'
+        MICROFONO = 'Micrófono', 'Micrófono'
+        PIZARRA = 'Pizarra', 'Pizarra'
+    
+    nombre_usuario = models.ForeignKey(User, null= True, on_delete= models.SET_NULL)
+    nombre = models.CharField(
+        max_length=15,  # Ajusta la longitud máxima según tus necesidades
+        choices=Tipo.choices,
+        default=Tipo.PIZARRA,
+    )
+    descripcion = models.TextField(blank=True, null=True)
+   
+    def __str__(self):
+        return self.get_nombre_display()
+
+
 
 class Reserva(models.Model):
     nombre_de_usuario = models.ForeignKey(User, null= True, on_delete= models.SET_NULL)
@@ -31,6 +50,8 @@ class Reserva(models.Model):
     hora_inicio = models.TimeField(default=timezone.now)
     hora_fin = models.TimeField(default=timezone.now)
     descripcion = models.TextField(blank=True, null=True)
-
+    
     def __str__(self):
         return f"{self.nombre_de_usuario} - {self.sala.nombre} - {self.fecha}"
+    
+

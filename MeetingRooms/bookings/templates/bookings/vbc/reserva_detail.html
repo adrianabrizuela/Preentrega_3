@@ -12,40 +12,46 @@
                         Detalle de la reserva
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ CAMPANITA.nombre }}</h5>
-                        {% if CAMPANITA.disponible %}
+                        <h5 class="card-title">usuario: {{ CAMPANITA.nombre_de_usuario }}</h5>
+                        <!-- {% if CAMPANITA.disponible %}
                         <h6 class="card-subtitle mb-2">Disponibilidad: Disponible</h6>
                         {% else %}
                         <h6 class="card-subtitle mb-2">Disponibilidad: No Disponible</h6>
-                        {% endif %}
-                        <p class="card-text">Capacidad: {{ CAMPANITA.capacidad }}</p>
+                        {% endif %} -->
+                        <p class="card-text">Sala: {{ CAMPANITA.sala }}</p>
+                        <p class="card-text">Fecha: {{ CAMPANITA.fecha }}</p>
                         <p class="card-text">Descripción: {{ CAMPANITA.descripcion | default:"No proporcionado" }}</p>
                     </div>
                 </div>
                 <div class="mt-4">
-                    <h3>Reservas para esta Sala</h3>
+                    <h3>Reservas</h3>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Nombre de Usuario</th>
+                                <th scope="col">Sala</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Hora Inicio</th>
                                 <th scope="col">Hora Fin</th>
                                 <th scope="col">Descripción</th>
+                                <th scope="col">Accesorio</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             {% for reserva in CAMPANITA.reservas.all %}
                             <tr>
                                 <td>{{ reserva.nombre_de_usuario }}</td>
+                                <td>{{ reserva.sala }}</td>
                                 <td>{{ reserva.fecha | date:"d/m/Y" }}</td>
                                 <td>{{ reserva.hora_inicio | date:"H:i" }}</td>
                                 <td>{{ reserva.hora_fin | date:"H:i" }}</td>
                                 <td>{{ reserva.descripcion | default:"No proporcionado" }}</td>
+                                <td>{{ reserva.accesorio }}</td>
                             </tr>
                             {% empty %}
                             <tr>
-                                <td colspan="5">No hay reservas para esta sala.</td>
+                                <td colspan="5">No hay reservas.</td>
                             </tr>
                             {% endfor %}
                         </tbody>

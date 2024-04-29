@@ -17,7 +17,12 @@ from .views import (
     ReservaDeleteView,
     ReservaDetailView,
     ReservaUpdateView,
-
+    AccesorioListView,
+    AccesorioCreateView,
+    AccesorioDetailView,
+    AccesorioDeleteView,
+    AccesorioUpdateView,
+   
     )
 
 urlpatterns = [
@@ -35,6 +40,10 @@ urlpatterns = [
     path("reserva/create/", ReservaCreateView.as_view(), name= "reserva-create"),
     path("reserva/<int:pk>/delete/", ReservaDeleteView.as_view(), name= 'reserva-delete'),
     path("reserva/<int:pk>/detail/", ReservaDetailView.as_view(),name= 'reserva-detail'),
-    path("reservaa/<int:pk>/update/", ReservaUpdateView.as_view(), name= "reserva-update"),
-
-    ]
+    path("reserva/<int:pk>/update/", ReservaUpdateView.as_view(), name= "reserva-update"),
+    path("accesorio/list/", AccesorioListView.as_view(), name= 'accesorio-list'),
+    path("accesorio/create/", AccesorioCreateView.as_view(),name= "accesorio-create"),
+    path("accesorio/<int:pk>/detail/", AccesorioDetailView.as_view(), name= "accesorio-detail"),
+    path("accesorio/<int:pk>/delete/", AccesorioDeleteView.as_view(), name= "accesorio-delete"),
+    path("accesorio/<int:pk>/update/", AccesorioUpdateView.as_view(), name= "accesorio-update")
+]

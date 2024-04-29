@@ -34,6 +34,7 @@
                     <td>{{ reserva.hora_inicio }}</td>
                     <td>{{ reserva.hora_fin }}</td>
                     <td>{{ reserva.descripcion }}</td>
+                   
                     <td>
                         <a href="{% url 'reserva-update' reserva.id %}" class="btn btn-primary btn-sm">Editar</a>
                         <a href="{% url 'reserva-delete' reserva.id %}" class="btn btn-primary btn-sm">Eliminar</a>
